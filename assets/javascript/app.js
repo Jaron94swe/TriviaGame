@@ -4,6 +4,7 @@ var second = 31
 var question = "is this working?";
 var answer = ["A:", "B:", "C:", "D:"];
 var correctAnswer = answer[0];
+var i = 0
 var triviaQuestions = [
     {
         question: "Q. What was the name of the second Indiana Jones movie, released in 1984?",
@@ -75,8 +76,10 @@ function interval() {
     $("#timer").text("you have " + second + " seconds remaing");
     if (second === -1) {
         clearInterval(beginInterval)
-        alert(correctAnswer, 4 * 1000)
+        alert(triviaQuestions[i].correctAnswer, 4 * 1000)
     }
+    i++
+    setup()
 }
 
 
@@ -85,48 +88,58 @@ interval();
 console.log(interval);
 
 $("#answerA").click(function () {
-if ( correctAnswer === answer[0]){
+if ( triviaQuestions[i].correctAnswer === triviaQuestions[i].answer[0]){
         clearInterval(beginInterval);
         alert("Correct!", 4 * 1000);
+    
     }
     else {
         clearInterval(beginInterval);
-        alert("Incorrect!" + "Correct Answer is " + correctAnswer  + "!", 4 * 1000);
+        alert("Incorrect!" + "Correct Answer is " + triviaQuestions[i].correctAnswer  + "!", 4 * 1000);
+
     }
 
+    i++
+setup()
 })
 
 
 $("#answerB").click(function () {
-    if (answer[1] === correctAnswer) {
+    if (triviaQuestions[i].correctAnswer === triviaQuestions[i].answer[1]) {
         clearInterval(beginInterval);
         alert("Correct!", 4 * 1000);
     }
     else {
         clearInterval(beginInterval);
-        alert("Incorrect!" + " Correct Answer is " + correctAnswer  + "!", 4 * 1000);
+        alert("Incorrect!" + " Correct Answer is " + triviaQuestions[i].correctAnswer  + "!", 4 * 1000);
     }
+    i++
+    setup()
 })
 
 $("#answerC").click(function () {
-    if (answer[2] === correctAnswer) {
+    if (triviaQuestions[i].correctAnswer === triviaQuestions[i].answer[2]) {
         clearInterval(beginInterval);
         alert("Correct!", 4 * 1000);
     }
     else {
         clearInterval(beginInterval);
-        alert("Incorrect!" + "Correct Answer is " + correctAnswer  + "!", 4 * 1000);
+        alert("Incorrect!" + "Correct Answer is " + triviaQuestions[i].correctAnswer  + "!", 4 * 1000);
     }
+    i++
+    setup()
 })
 $("#answerD").click(function () {
-    if (answer[3] === correctAnswer) {
+    if (triviaQuestions[i].correctAnswer === triviaQuestions[i].answer[3]) {
         clearInterval(beginInterval);
         alert("Correct!", 4 * 1000);
     }
     else {
         clearInterval(beginInterval);
-        alert("Incorrect!" + "Correct Answer is " + correctAnswer  + "!", 4 * 1000);
+        alert("Incorrect!" + "Correct Answer is " + triviaQuestions[i].correctAnswer  + "!", 4 * 1000);
     }
+    i++
+    setup()
 })
 
                
@@ -134,7 +147,6 @@ $("#answerD").click(function () {
 // setup();
 
     function setup() {
-        for (var i = 0; i < triviaQuestions.length; i++) {
             $("#questions").text(triviaQuestions[i].question)
             console.log(triviaQuestions[i].question)
             
@@ -144,4 +156,4 @@ $("#answerD").click(function () {
             $("#answerC").text(triviaQuestions[i].answer[2]);
             $("#answerD").text(triviaQuestions[i].answer[3]);
         }
-    }
+    
